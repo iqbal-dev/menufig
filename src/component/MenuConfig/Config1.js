@@ -7,21 +7,21 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Config from "./Config";
 
 const useStyles = makeStyles({
   root: {
-    width: "100%",
+    width: "90%",
+    marginLeft: "10%",
   },
 });
-const MenuConfig = (props) => {
-  const item = props.items;
+const Config1 = (props) => {
+  const item = props.item;
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{ marginLeft: "20px" }}>
       <Accordion>
         <AccordionSummary
-          style={{ backgroundColor: "#74d8df30", marginBottom: "5px" }}
+          className={classes.root}
           expandIcon={<ExpandMoreIcon />}
           aria-label="Expand"
           aria-controls="additional-actions1-content"
@@ -35,14 +35,15 @@ const MenuConfig = (props) => {
             label={item.label}
           />
         </AccordionSummary>
-        <>
-          {item.items.length
-            ? item.items.map((item) => <Config item={item} />)
-            : []}
-        </>
+        <AccordionDetails>
+          <>
+            The click event of the nested action will propagate up and expand
+            the accordion unless you explicitly stop it.
+          </>
+        </AccordionDetails>
       </Accordion>
     </div>
   );
 };
 
-export default MenuConfig;
+export default Config1;

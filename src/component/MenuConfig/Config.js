@@ -7,21 +7,23 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Config from "./Config";
+import Config1 from "./Config1";
 
 const useStyles = makeStyles({
   root: {
-    width: "100%",
+    width: "95%",
+    marginLeft: "5%",
   },
 });
-const MenuConfig = (props) => {
-  const item = props.items;
+const Config = (props) => {
+  const item = props.item;
+  console.log(item.items);
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Accordion>
         <AccordionSummary
-          style={{ backgroundColor: "#74d8df30", marginBottom: "5px" }}
+          className={classes.root}
           expandIcon={<ExpandMoreIcon />}
           aria-label="Expand"
           aria-controls="additional-actions1-content"
@@ -36,8 +38,8 @@ const MenuConfig = (props) => {
           />
         </AccordionSummary>
         <>
-          {item.items.length
-            ? item.items.map((item) => <Config item={item} />)
+          {item.items && item.items.length
+            ? item.items.map((item) => <Config1 item={item} />)
             : []}
         </>
       </Accordion>
@@ -45,4 +47,4 @@ const MenuConfig = (props) => {
   );
 };
 
-export default MenuConfig;
+export default Config;
